@@ -5,9 +5,5 @@ interface HeaderProps {
 }
 
 export const Header: FC<HeaderProps> = ({ title = "Rick and Morty Characters" }) => {
-  return (
-    <header>
-      <h2>{title}</h2>
-    </header>
-  );
+  return <h2>{title}</h2>;
 };

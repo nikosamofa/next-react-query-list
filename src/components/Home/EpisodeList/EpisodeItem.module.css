@@ -1,0 +1,12 @@
+.item {
+  padding: 8px;
+  cursor: pointer;
+}
+
+.item:hover {
+  background-color: #888;
+}
+
+.itemSelected {
+  background-color: #ccc;
+}
