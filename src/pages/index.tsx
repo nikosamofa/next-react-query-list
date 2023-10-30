@@ -1,5 +1,5 @@
 import { QueryClient, dehydrate } from "@tanstack/react-query";
-import { charactersByPageQueryKey, getCharactersByPage, getEpisodesByPageInfinite } from "@/client";
+import { getCharactersByPage, getEpisodesByPageUrlInfinite } from "@/client";
 import { BASE_URL } from "@/client/config";
 import { Episode } from "@/types";
 import { Response } from "@/client/types";
@@ -11,7 +11,7 @@ export async function getStaticProps() {
   await Promise.all([
     queryClient.prefetchInfiniteQuery({
       queryKey: ["episodesByPage"],
-      queryFn: getEpisodesByPageInfinite,
+      queryFn: getEpisodesByPageUrlInfinite,
       initialPageParam: `${BASE_URL}episode?page=1`,
       getNextPageParam: (lastPage: Response<Episode>) => lastPage.info.next,
     }),

@@ -1,6 +1,6 @@
-import { useInfiniteQuery, useQueryClient } from "@tanstack/react-query";
+import { useInfiniteQuery } from "@tanstack/react-query";
 import { FC, Fragment, useEffect, useRef } from "react";
-import { getEpisodesByPageInfinite, useEpisodesByPage } from "@/client";
+import { getEpisodesByPageUrlInfinite } from "@/client";
 import { BASE_URL } from "@/client/config";
 import { Response } from "@/client/types";
 import { Episode } from "@/types";
@@ -17,7 +17,7 @@ export const EpisodeList: FC<EpisodeListProps> = ({ selectedEpisode, setSelected
   const { data, error, fetchNextPage, hasNextPage, isFetching, isFetchingNextPage, status } =
     useInfiniteQuery({
       queryKey: ["episodesByPage"],
-      queryFn: getEpisodesByPageInfinite,
+      queryFn: getEpisodesByPageUrlInfinite,
       initialPageParam: `${BASE_URL}episode?page=1`,
       getNextPageParam: (lastPage: Response<Episode>) => lastPage.info.next,
     });
