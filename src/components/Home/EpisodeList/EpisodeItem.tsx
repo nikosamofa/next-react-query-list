@@ -5,19 +5,19 @@ import classNames from "classnames";
 
 interface EpisodeItemProps {
   data: Episode;
-  selectedEpisodeId: number | null;
-  setSelectedEpisodeId: (value: number | null) => void;
+  selectedEpisode: Episode | null;
+  setSelectedEpisode: (value: Episode | null) => void;
 }
 
 export const EpisodeItem: FC<EpisodeItemProps> = ({
   data,
-  selectedEpisodeId,
-  setSelectedEpisodeId,
+  selectedEpisode,
+  setSelectedEpisode,
 }) => {
-  const selected = data.id === selectedEpisodeId;
+  const selected = data.id === selectedEpisode?.id;
 
   const handleClick = () => {
-    setSelectedEpisodeId(selected ? null : data.id);
+    setSelectedEpisode(selected ? null : data);
   };
 
   return (

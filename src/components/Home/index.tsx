@@ -1,21 +1,23 @@
-import { Fragment, useState } from "react";
-import { Header } from "./Header";
+import { useState } from "react";
+import { Title } from "./Title";
 import { EpisodeList } from "./EpisodeList";
-import { CharactersPanel } from "./CharactersPanel";
+import { CharactersPanel, CharactersPanelByUrl } from "./CharactersPanel";
 import styles from "./index.module.css";
+import { Episode } from "@/types";
 
 export const Home = () => {
-  const [selectedEpisodeId, setSelectedEpisodeId] = useState<number | null>(null);
+  const [selectedEpisode, setSelectedEpisode] = useState<Episode | null>(null);
 
   return (
     <div className={styles.container}>
-      <Header />
+      <Title />
       <div className={styles.main}>
-        <EpisodeList
-          selectedEpisodeId={selectedEpisodeId}
-          setSelectedEpisodeId={setSelectedEpisodeId}
-        />
-        <CharactersPanel />
+        <EpisodeList selectedEpisode={selectedEpisode} setSelectedEpisode={setSelectedEpisode} />
+        {!!selectedEpisode ? (
+          <CharactersPanelByUrl urlList={selectedEpisode?.characters} />
+        ) : (
+          <CharactersPanel />
+        )}
       </div>
     </div>
   );

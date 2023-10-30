@@ -8,11 +8,11 @@ import styles from "./index.module.css";
 import { EpisodeItem } from "./EpisodeItem";
 
 interface EpisodeListProps {
-  selectedEpisodeId: number | null;
-  setSelectedEpisodeId: (value: number | null) => void;
+  selectedEpisode: Episode | null;
+  setSelectedEpisode: (value: Episode | null) => void;
 }
 
-export const EpisodeList: FC<EpisodeListProps> = ({ selectedEpisodeId, setSelectedEpisodeId }) => {
+export const EpisodeList: FC<EpisodeListProps> = ({ selectedEpisode, setSelectedEpisode }) => {
   const observerTarget = useRef(null);
   const { data, error, fetchNextPage, hasNextPage, isFetching, isFetchingNextPage, status } =
     useInfiniteQuery({
@@ -21,7 +21,6 @@ export const EpisodeList: FC<EpisodeListProps> = ({ selectedEpisodeId, setSelect
       initialPageParam: `${BASE_URL}episode?page=1`,
       getNextPageParam: (lastPage: Response<Episode>) => lastPage.info.next,
     });
-  console.log("episodes.data", data);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -60,12 +59,15 @@ export const EpisodeList: FC<EpisodeListProps> = ({ selectedEpisodeId, setSelect
             <EpisodeItem
               key={`episode-item-${episode.id}`}
               data={episode}
-              selectedEpisodeId={selectedEpisodeId}
-              setSelectedEpisodeId={setSelectedEpisodeId}
+              selectedEpisode={selectedEpisode}
+              setSelectedEpisode={setSelectedEpisode}
             />
           ))}
         </Fragment>
       ))}
+
+      {isFetchingNextPage && <p className={styles.loadingText}>Loading more...</p>}
+      {isFetching && !isFetchingNextPage && <p className={styles.loadingText}>Fetching...</p>}
 
       <div ref={observerTarget} />
     </div>

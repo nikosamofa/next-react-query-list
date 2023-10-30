@@ -1,2 +1,2 @@
-export * from "./characterById";
+export * from "./characterByUrl";
 export * from "./charactersByPage";
