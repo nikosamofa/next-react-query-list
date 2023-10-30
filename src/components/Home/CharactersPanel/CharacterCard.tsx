@@ -10,20 +10,18 @@ interface CharacterCardProps {
 export const CharacterCard: FC<CharacterCardProps> = ({ data }) => {
   return (
     <div className={styles.card}>
-      <div className={styles.image}>
+      <div className={styles.imageContainer}>
         <Image
           src={data.image}
-          width={320}
-          height={180}
-          style={{ objectFit: "cover" }}
+          width={200}
+          height={200}
           alt={`image for ${data.name}`}
+          className={styles.image}
+          placeholder="blur"
+          blurDataURL="/assets/anonymous.png"
         />
       </div>
-      <div className={styles.body}>
-        <p className={styles.title}>{data.name}</p>
-        <p className={styles.gender}>Gender: {data.status}</p>
-        <p className={styles.status}>Status: {data.status}</p>
-      </div>
+      <p className={styles.nameText}>{data.name}</p>
     </div>
   );
 };

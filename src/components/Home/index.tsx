@@ -14,7 +14,10 @@ export const Home = () => {
       <div className={styles.main}>
         <EpisodeList selectedEpisode={selectedEpisode} setSelectedEpisode={setSelectedEpisode} />
         {!!selectedEpisode ? (
-          <CharactersPanelByUrl urlList={selectedEpisode?.characters} />
+          <CharactersPanelByUrl
+            urlList={selectedEpisode?.characters}
+            episodeTitle={selectedEpisode.name}
+          />
         ) : (
           <CharactersPanel />
         )}

@@ -11,7 +11,8 @@ export const CharacterCardByUrl: FC<CharacterCardByUrlProps> = ({ url }) => {
   const { data, error, status } = useCharacterById(url);
 
   if (status === "pending") {
-    return <div className={styles.card}>Loading...</div>;
+    // This gives better UX instead of showing loading status
+    return null;
   }
 
   if (status === "error") {

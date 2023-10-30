@@ -44,32 +44,36 @@ export const EpisodeList: FC<EpisodeListProps> = ({ selectedEpisode, setSelected
   }, [observerTarget, fetchNextPage, hasNextPage]);
 
   if (status === "pending") {
-    return <div className={styles.episodeList}>Loading...</div>;
+    return <div className={styles.container}>Loading...</div>;
   }
 
   if (status === "error") {
-    return <div className={styles.episodeList}>Error: {error.message}</div>;
+    return <div className={styles.container}>Error: {error.message}</div>;
   }
 
   return (
-    <div className={styles.episodeList}>
-      {data.pages.map((page, i) => (
-        <Fragment key={`episode-page-${i}`}>
-          {page.results.map((episode) => (
-            <EpisodeItem
-              key={`episode-item-${episode.id}`}
-              data={episode}
-              selectedEpisode={selectedEpisode}
-              setSelectedEpisode={setSelectedEpisode}
-            />
-          ))}
-        </Fragment>
-      ))}
+    <div className={styles.container}>
+      <p className={styles.text}>Episodes</p>
+      <hr />
+      <div className={styles.episodeList}>
+        {data.pages.map((page, i) => (
+          <Fragment key={`episode-page-${i}`}>
+            {page.results.map((episode) => (
+              <EpisodeItem
+                key={`episode-item-${episode.id}`}
+                data={episode}
+                selectedEpisode={selectedEpisode}
+                setSelectedEpisode={setSelectedEpisode}
+              />
+            ))}
+          </Fragment>
+        ))}
 
-      {isFetchingNextPage && <p className={styles.loadingText}>Loading more...</p>}
-      {isFetching && !isFetchingNextPage && <p className={styles.loadingText}>Fetching...</p>}
+        {isFetchingNextPage && <p className={styles.loadingText}>Loading more...</p>}
+        {isFetching && !isFetchingNextPage && <p className={styles.loadingText}>Fetching...</p>}
 
-      <div ref={observerTarget} />
+        <div ref={observerTarget} className={styles.observer} />
+      </div>
     </div>
   );
 };

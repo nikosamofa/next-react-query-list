@@ -37,7 +37,7 @@ The page 1 data for episodes and characters are preloaded as they are the initia
 ### [EpisodeList](./src/components/Home/EpisodeList/index.tsx)
 
 Infinite scroll loading is introduced.
-The height of list is limited to `60vh` to see the infinite scroll loading effect.
+The height of list is limited to `55vh` to see the infinite scroll loading effect.
 
 ### Fetching characters data for selected Episode
 
