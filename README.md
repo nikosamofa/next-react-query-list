@@ -1,6 +1,6 @@
 # AnaghTech Assessment
 
-[Problem Requirements](React Assesment (JT).pdf)
+[Problem Requirements](./React Assesment (JT).pdf)
 
 ## Getting Started
 
@@ -34,7 +34,7 @@ The infinite loading and caching in this project leverage the React-Query.
 
 The page 1 data for episodes and characters are preloaded as they are the initial data used in the page.
 
-### `EpisodeList`
+### [EpisodeList](./src/components/Home/EpisodeList/index.tsx)
 
 Infinite scroll loading is introduced.
 The height of list is limited to `60vh` to see the infinite scroll loading effect.
