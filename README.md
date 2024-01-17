@@ -1,12 +1,12 @@
-# AnaghTech Assessment
+# Next + React-Query Code Sample
 
 [Problem Requirements](./React Assesment (JT).pdf)
 
 ## Getting Started
 
 ```bash
-git clone https://github.com/nikosamofa/anaghtech-next-assessment
-cd anaghtech-next-assessment
+git clone https://github.com/nikosamofa/next-react-query-list
+cd next-react-query-list
 
 # node version 18 is required for this project
 nvm install 18
